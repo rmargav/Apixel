@@ -2247,15 +2247,17 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 mx-auto">
-                        <form class="form-cta">
+                        <form class="form-cta" action="contact.php" method="POST">
                             <div class="form-content">
                                 <div class="tf-grid-layout sm-col-2">
                                     <fieldset class="tf-field">
-                                        <input class="tf-input" type="text" placeholder required>
+                                        <!-- Added name="name" -->
+                                        <input class="tf-input" type="text" name="name" placeholder required>
                                         <label class="tf-lable">Name <span class="text-primary">*</span></label>
                                     </fieldset>
                                     <fieldset class="tf-field">
-                                        <input class="tf-input" type="email" placeholder required>
+                                        <!-- Added name="email" -->
+                                        <input class="tf-input" type="email" name="email" placeholder required>
                                         <label class="tf-lable">Email <span class="text-primary">*</span></label>
                                     </fieldset>
                                 </div>
@@ -2269,43 +2271,19 @@
                                             <span class="current letter-space--1">You are interested in</span>
 
                                             <ul class="list">
-                                                <li class="option disabled">
-                                                    -- Select an option --
-                                                </li>
-
-                                                <li class="option">
-                                                    VFX & CGI
-                                                </li>
-
-                                                <li class="option">
-                                                    Animation & Motion Design
-                                                </li>
-
-                                                <li class="option">
-                                                    Film & Video Production
-                                                </li>
-
-                                                <li class="option">
-                                                    Post-Production
-                                                </li>
-
-                                                <li class="option">
-                                                    AI Creative Studio
-                                                </li>
-
-                                                <li class="option">
-                                                    Design & Branding
-                                                </li>
-
-                                                <li class="option">
-                                                    DCP & Mastering
-                                                </li>
-
-                                                <li class="option">
-                                                    Virtual Production
-                                                </li>
+                                                <li class="option disabled">-- Select an option --</li>
+                                                <li class="option">VFX & CGI</li>
+                                                <li class="option">Animation & Motion Design</li>
+                                                <li class="option">Film & Video Production</li>
+                                                <li class="option">Post-Production</li>
+                                                <li class="option">AI Creative Studio</li>
+                                                <li class="option">Design & Branding</li>
+                                                <li class="option">DCP & Mastering</li>
+                                                <li class="option">Virtual Production</li>
                                             </ul>
                                         </div>
+
+                                        <input type="hidden" name="interest" id="interest">
                                     </div>
                                     <div class="nc-wrap">
                                         <p class="select-label fs-14 text-white-64 d-sm-none">
@@ -2316,30 +2294,21 @@
                                             <span class="current letter-space--1">Budget in INR</span>
 
                                             <ul class="list">
-                                                <li class="option disabled">
-                                                    -- Select your budget --
-                                                </li>
-                                                <li class="option">
-                                                    ₹10,000 – ₹50,000
-                                                </li>
-                                                <li class="option">
-                                                    ₹50,000 – ₹1,00,000
-                                                </li>
-                                                <li class="option">
-                                                    ₹1,00,000 – ₹5,00,000
-                                                </li>
-                                                <li class="option">
-                                                    ₹5,00,000 – ₹10,00,000
-                                                </li>
-                                                <li class="option">
-                                                    ₹10,00,000+
-                                                </li>
+                                                <li class="option disabled">-- Select your budget --</li>
+                                                <li class="option">₹10,000 – ₹50,000</li>
+                                                <li class="option">₹50,000 – ₹1,00,000</li>
+                                                <li class="option">₹1,00,000 – ₹5,00,000</li>
+                                                <li class="option">₹5,00,000 – ₹10,00,000</li>
+                                                <li class="option">₹10,00,000+</li>
                                             </ul>
                                         </div>
+
+                                        <input type="hidden" name="budget" id="budget">
                                     </div>
                                 </div>
                                 <fieldset class="tf-field">
-                                    <input class="tf-input" type="text" placeholder required>
+                                    <!-- Added name="details" -->
+                                    <input class="tf-input" type="text" name="details" placeholder required>
                                     <label class="tf-lable">Project details</label>
                                 </fieldset>
                             </div>
@@ -2348,7 +2317,8 @@
                                     <span class="text-caption">SUBMIT MESSAGE</span>
                                 </button>
                                 <p class="text-body-1">
-                                    Inquire now - <a href="#" class="text-primary">davies@gmail.com</a>
+                                    Inquire now - <a href="mailto:davies@gmail.com"
+                                        class="text-primary">davies@gmail.com</a>
                                 </p>
                             </div>
                         </form>
