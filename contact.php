@@ -2,7 +2,7 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Replace this with your business email address
-    $to = "info@apixelfilm.com"; 
+    $to = "business@apixelfilm.com"; 
     
     // Sanitize and capture form inputs
     $name = strip_tags(trim($_POST["name"]));
