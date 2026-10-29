@@ -8,6 +8,8 @@
  * Setting Color
  * Open Menu
  * Click Active
+ * Selected Work Slider
+ * Show Team Section
  */
 
 (function ($) {
@@ -395,6 +397,31 @@
     });
   };
 
+  /* Show Team Section
+-------------------------------------------------------------------------*/
+  var showTeamSection = function () {
+    $("#show-team-btn").on("click", function (e) {
+      e.preventDefault();
+      var $teamSection = $("#teamScroll");
+
+      // Slide the section down over 600ms
+      $teamSection.slideDown(600, function () {
+        // Refresh GSAP ScrollTrigger so animations inside the team section work
+        if (typeof ScrollTrigger !== "undefined") {
+          ScrollTrigger.refresh();
+        }
+
+        // Smooth scroll down to the newly opened section
+        $("html, body").animate(
+          {
+            scrollTop: $teamSection.offset().top - 80,
+          },
+          800,
+        );
+      });
+    });
+  };
+
   /* Dom Ready
 -------------------------------------------------------------------------*/
   $(function () {
@@ -407,5 +434,6 @@
     clickActive();
 
     selectedWorkSlider();
+    showTeamSection();
   });
 })(jQuery);
