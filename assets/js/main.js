@@ -8,7 +8,7 @@
  * Setting Color
  * Open Menu
  * Click Active
- * Selected Work Slider
+ * Selected Work Slider (High Performance)
  * Show Team Section
  */
 
@@ -45,6 +45,7 @@
       $("html, body").animate({ scrollTop: 0 }, 100);
     });
   };
+
   /* Infinite Slide 
     -------------------------------------------------------------------------*/
   var infiniteSlide = function () {
@@ -63,6 +64,7 @@
       });
     }
   };
+
   /* Update Clock
     -------------------------------------------------------------------------*/
   var updateClock = () => {
@@ -81,7 +83,7 @@
     startClocks(".clock");
   };
 
-  /* Cursor Trail
+  /* Cursor Trail (Mobile CPU Fix Applied)
     -------------------------------------------------------------------------*/
   var cursorTrail = () => {
     // ONLY RUN ON DESKTOP - Do not run heavy canvas on mobile touch devices
@@ -90,7 +92,7 @@
     }
 
     const canvas = document.getElementById("trail");
-    if (!canvas) return; // Safeguard if canvas is missing
+    if (!canvas) return;
     const ctx = canvas.getContext("2d");
     let w = window.innerWidth,
       h = window.innerHeight;
@@ -101,7 +103,6 @@
     let ripples = [];
 
     window.addEventListener("resize", () => {
-      // Re-check on resize in case they dragged a window
       if (window.innerWidth <= 1024) return;
       w = window.innerWidth;
       h = window.innerHeight;
@@ -188,6 +189,7 @@
       });
     }
   };
+
   /* Setting Color
     -------------------------------------------------------------------------*/
   const settingColor = () => {
@@ -217,6 +219,7 @@
       $(".choose-item").removeClass("active").eq(index).addClass("active");
     }
   };
+
   /* Open Menu
     -------------------------------------------------------------------------*/
   var openMbMenu = () => {
@@ -230,6 +233,7 @@
       $("body").toggleClass("overflow-hidden");
     });
   };
+
   /* Click Active
     -------------------------------------------------------------------------*/
   var clickActive = () => {
@@ -243,174 +247,188 @@
     });
   };
 
-  /* Selected Work - Slick Controls
--------------------------------------------------------------------------*/
+  /* Selected Work - Custom High-Performance Swapper (Mobile Crash Fix)
+    -------------------------------------------------------------------------*/
   var selectedWorkSlider = function () {
-    var $nav = $(".slick-nav");
-    var $images = $(".slick-for");
-    var $tags = $(".work-tag li");
+    // Array holding all 17 projects
+    var projects = [
+      {
+        title: "Toxic",
+        year: "2026",
+        src: "assets/images/section/001 Toixc.jpg",
+      },
+      {
+        title: "Dhurandhar The Revange",
+        year: "2026",
+        src: "assets/images/section/002vDR2.jpg",
+      },
+      {
+        title: "Dhurandhar",
+        year: "2025",
+        src: "assets/images/section/003 DR.jpg",
+      },
+      {
+        title: "Kartavya",
+        year: "2026",
+        src: "assets/images/section/004 KTY.jpg",
+      },
+      {
+        title: "Pushpa 2",
+        year: "2024",
+        src: "assets/images/section/005 001 PUSHPA.jpg",
+      },
+      {
+        title: "Animal",
+        year: "2023",
+        src: "assets/images/section/005 ANImal.jpg",
+      },
+      {
+        title: "Bhola Shankar",
+        year: "2023",
+        src: "assets/images/section/006 Bhola shankar.jpg",
+      },
+      {
+        title: "AdiPurush",
+        year: "2023",
+        src: "assets/images/section/007 ADIpurush.jpg",
+      },
+      {
+        title: "Shiddat",
+        year: "2021",
+        src: "assets/images/section/008 001 SD.jpg",
+      },
+      {
+        title: "Abeer Gulaal",
+        year: "2025",
+        src: "assets/images/section/008 002 AG.jpg",
+      },
+      {
+        title: "An Action Hero",
+        year: "2022",
+        src: "assets/images/section/008 Action hero.jpg",
+      },
+      {
+        title: "Heropanti 2",
+        year: "2022",
+        src: "assets/images/section/009 001 HP2.jpg",
+      },
+      {
+        title: "Bajao",
+        year: "2023",
+        src: "assets/images/section/009 Bajao.jpg",
+      },
+      {
+        title: "Neeyat",
+        year: "2023",
+        src: "assets/images/section/010 Neeyat.jpg",
+      },
+      {
+        title: "Operation Mayfair",
+        year: "2023",
+        src: "assets/images/section/011 Opration may fair.jpg",
+      },
+      {
+        title: "Sergeant",
+        year: "2023",
+        src: "assets/images/section/012 Sergeant.jpg",
+      },
+      {
+        title: "Hustlers",
+        year: "2024",
+        src: "assets/images/section/013 Hustler.jpg",
+      },
+    ];
 
-    if (!$nav.length || !$images.length || !$.fn.slick) {
-      return;
+    var currentIndex = 0;
+    var $title = $("#dynamic-title");
+    var $image = $("#dynamic-image");
+    var $year = $("#dynamic-project-year");
+    var $tags = $("#dynamic-tags li");
+    var autoPlayTimer;
+    var preloadedImages = {}; // Cache to hold preloaded images
+
+    // Preload function to prevent delay on click
+    function preloadImage(index) {
+      if (!preloadedImages[index]) {
+        var img = new Image();
+        img.src = projects[index].src;
+        preloadedImages[index] = img;
+      }
     }
 
-    /*
-     * IMPORTANT:
-     * If the template has already initialized Slick,
-     * destroy both sliders first so we can initialize them
-     * with our own desktop/mobile settings.
-     */
+    function updateDOM(index) {
+      var project = projects[index];
 
-    if ($nav.hasClass("slick-initialized")) {
-      $nav.slick("unslick");
+      // Brief opacity fade for a smooth switch without animation lag
+      $title.css("opacity", 0);
+      $image.css("opacity", 0);
+
+      setTimeout(function () {
+        // Update Text
+        $title.text(project.title);
+        $image.attr("src", project.src);
+        $image.attr("alt", project.title);
+
+        // Format Year
+        var firstHalf = project.year.substring(0, 2);
+        var secondHalf = project.year.substring(2, 4);
+        $year.html(
+          firstHalf + '<span class="text-primary">' + secondHalf + "</span>",
+        );
+
+        // Update Tag
+        $tags.removeClass("active");
+        $tags.eq(index).addClass("active");
+
+        // Fade back in
+        $title.css("opacity", 1);
+        $image.css("opacity", 1);
+      }, 150);
+
+      // Preload the next image so it is ready instantly
+      var nextIndex = (index + 1) % projects.length;
+      preloadImage(nextIndex);
     }
 
-    if ($images.hasClass("slick-initialized")) {
-      $images.slick("unslick");
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % projects.length;
+      updateDOM(currentIndex);
     }
 
-    /*
-     * TITLE SLIDER
-     */
-    $nav.slick({
-      slidesToShow: 1,
-      slidesToScroll: 1,
-
-      arrows: false,
-      dots: false,
-
-      autoplay: true,
-      autoplaySpeed: 8000, // 6 seconds
-      speed: 800, // transition speed
-
-      infinite: true,
-      adaptiveHeight: false,
-
-      asNavFor: ".slick-for",
-
-      responsive: [
-        {
-          breakpoint: 767,
-          settings: {
-            slidesToShow: 1,
-            autoplay: true,
-            autoplaySpeed: 8000,
-            speed: 700,
-          },
-        },
-      ],
-    });
-
-    /*
-     * IMAGE SLIDER
-     */
-    $images.slick({
-      slidesToShow: 1,
-      slidesToScroll: 1,
-
-      arrows: false,
-      dots: false,
-
-      autoplay: true,
-      autoplaySpeed: 8000, // 6 seconds
-      speed: 800,
-
-      infinite: true,
-
-      adaptiveHeight: false,
-
-      asNavFor: ".slick-nav",
-
-      lazyLoad: "ondemand",
-
-      responsive: [
-        {
-          breakpoint: 767,
-          settings: {
-            slidesToShow: 1,
-            autoplay: true,
-            autoplaySpeed: 8000,
-            speed: 700,
-          },
-        },
-      ],
-    });
-
-    /* -----------------------------------------
-   PROJECT TAGS
------------------------------------------ */
-
-    function updateTags(index) {
-      $tags.removeClass("active");
-      $tags.eq(index).addClass("active");
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + projects.length) % projects.length;
+      updateDOM(currentIndex);
     }
 
-    /* Show first project's tags */
-    updateTags(0);
+    function startAutoPlay() {
+      clearInterval(autoPlayTimer);
+      autoPlayTimer = setInterval(nextSlide, 6000); // 6 seconds
+    }
 
-    /* Change tags when image changes */
-    $images.on("afterChange", function (event, slick, currentSlide) {
-      updateTags(currentSlide);
-    });
-
-    /*
-     * PREV / NEXT BUTTONS
-     */
-    $(".nav-prev-swiper")
+    // Button Clicks
+    $("#btn-next-work")
       .off("click")
       .on("click", function () {
-        $images.slick("slickPrev");
+        nextSlide();
+        startAutoPlay(); // Reset timer on manual click
       });
 
-    $(".nav-next-swiper")
+    $("#btn-prev-work")
       .off("click")
       .on("click", function () {
-        $images.slick("slickNext");
+        prevSlide();
+        startAutoPlay();
       });
 
-    /*
-     * UPDATE YEAR
-     */
-    function updateYear(index) {
-      var slide = $nav.find(".slick-slide[data-slick-index='" + index + "']");
-
-      /*
-       * Because Slick creates cloned slides,
-       * fallback to the actual slide if needed.
-       */
-      if (!slide.length) {
-        slide = $nav.find(".slick-slide.slick-current");
-      }
-
-      var year = slide.attr("data-year");
-
-      if (!year) {
-        year = "2024";
-      }
-
-      $("#dynamic-project-year").html(
-        year.substring(0, 2) +
-          '<span class="text-primary">' +
-          year.substring(2, 4) +
-          "</span>",
-      );
+    // Init
+    if ($title.length && $image.length) {
+      preloadImage(1); // Preload image 2 immediately
+      startAutoPlay();
     }
-
-    /*
-     * Initial year
-     */
-    updateYear(0);
-
-    /*
-     * Update year whenever image/title changes
-     */
-    $images.on("afterChange", function (event, slick, currentSlide) {
-      updateYear(currentSlide);
-    });
   };
 
   /* Show Team Section
--------------------------------------------------------------------------*/
+    -------------------------------------------------------------------------*/
   var showTeamSection = function () {
     $("#show-team-btn").on("click", function (e) {
       e.preventDefault();
@@ -435,7 +453,7 @@
   };
 
   /* Dom Ready
--------------------------------------------------------------------------*/
+    -------------------------------------------------------------------------*/
   $(function () {
     infiniteSlide();
     updateClock();
@@ -444,7 +462,6 @@
     counterOdo();
     openMbMenu();
     clickActive();
-
     selectedWorkSlider();
     showTeamSection();
   });
