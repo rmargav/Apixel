@@ -80,10 +80,17 @@
 
     startClocks(".clock");
   };
+
   /* Cursor Trail
     -------------------------------------------------------------------------*/
   var cursorTrail = () => {
+    // ONLY RUN ON DESKTOP - Do not run heavy canvas on mobile touch devices
+    if (window.innerWidth <= 1024 || "ontouchstart" in window) {
+      return;
+    }
+
     const canvas = document.getElementById("trail");
+    if (!canvas) return; // Safeguard if canvas is missing
     const ctx = canvas.getContext("2d");
     let w = window.innerWidth,
       h = window.innerHeight;
@@ -94,6 +101,8 @@
     let ripples = [];
 
     window.addEventListener("resize", () => {
+      // Re-check on resize in case they dragged a window
+      if (window.innerWidth <= 1024) return;
       w = window.innerWidth;
       h = window.innerHeight;
       canvas.width = w;
@@ -153,6 +162,7 @@
     }
     draw();
   };
+
   /* Counter Odo
     -------------------------------------------------------------------------*/
   var counterOdo = () => {
