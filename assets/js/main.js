@@ -311,7 +311,7 @@
 
       asNavFor: ".slick-nav",
 
-      azyLoad: "ondemand",
+      lazyLoad: "ondemand",
 
       responsive: [
         {
