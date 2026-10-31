@@ -311,6 +311,8 @@
 
       asNavFor: ".slick-nav",
 
+      azyLoad: "ondemand",
+
       responsive: [
         {
           breakpoint: 767,
