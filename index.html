@@ -34,8 +34,8 @@
     <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
 
     <!-- Favicon and Touch Icons  -->
-    <link rel="shortcut icon" href="assets/images/logo/favicon.svg">
-    <link rel="apple-touch-icon-precomposed" href="assets/images/logo/favicon.svg">
+    <link rel="shortcut icon" href="assets/images/logo/Fevicon.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/images/logo/Fevicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
     <!-- Primary Meta Tags -->
@@ -360,60 +360,101 @@
         <!-- Service -->
         <section class="section-service-2 overflow-hidden flat-spacing" id="serviceScroll">
 
+            <!-- GPU Acceleration & Professional Styling Fixes -->
+            <style>
+                /* 1. Performance: Force Hardware Acceleration on Animating Elements to stop mobile lag */
+                .section-service-2 .wg-service-2,
+                .section-service-2 .bg-image,
+                .section-service-2 .image-2,
+                .section-service-2 .main-image {
+                    will-change: transform, opacity, width, height, left;
+                    transform: translateZ(0);
+                    backface-visibility: hidden;
+                    -webkit-font-smoothing: subpixel-antialiased;
+                }
+
+                /* 2. Aesthetics: Premium Picture-Frame Styling for Service Images */
+                .section-service-2 .main-image .image,
+                .section-service-2 .image-2 {
+                    border-radius: 16px;
+                    border: 1px solid rgba(255, 255, 255, 0.15);
+                    background: rgba(255, 255, 255, 0.03);
+                    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+                    padding: 6px;
+                    /* Inner frame gap */
+                    overflow: hidden;
+                    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+                }
+
+                .section-service-2 .wg-service-2:hover .main-image .image {
+                    border-color: rgba(255, 255, 255, 0.3);
+                    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+                }
+
+                .section-service-2 .main-image .image img,
+                .section-service-2 .image-2 img {
+                    border-radius: 10px;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            </style>
+
             <!-- Services Bg image -->
             <div class="bg-image-list">
 
                 <div class="bg-image">
-                    <img loading="lazy" src="assets/images/section/bg-service-1.jpg" alt="VFX and CGI">
+                    <img loading="lazy" src="assets/images/section/Services_bg_001.jpg" alt="VFX and CGI">
                     <div class="img-item">
                         <img loading="lazy" src="assets/images/item/overlay.png" alt="">
                     </div>
                 </div>
 
                 <div class="bg-image">
-                    <img loading="lazy" src="assets/images/section/bg-service-2.jpg" alt="Animation and Motion Design">
+                    <img loading="lazy" src="assets/images/section/Services_bg_002.jpg"
+                        alt="Animation and Motion Design">
                     <div class="img-item">
                         <img loading="lazy" src="assets/images/item/overlay.png" alt="">
                     </div>
                 </div>
 
                 <div class="bg-image">
-                    <img loading="lazy" src="assets/images/section/bg-service-3.jpg" alt="Film and Video Production">
+                    <img loading="lazy" src="assets/images/section/Services_bg_003.jpg" alt="Film and Video Production">
                     <div class="img-item">
                         <img loading="lazy" src="assets/images/item/overlay.png" alt="">
                     </div>
                 </div>
 
                 <div class="bg-image">
-                    <img loading="lazy" src="assets/images/section/bg-service-1.jpg" alt="Post Production">
+                    <img loading="lazy" src="assets/images/section/Services_bg_001.jpg" alt="Post Production">
                     <div class="img-item">
                         <img loading="lazy" src="assets/images/item/overlay.png" alt="">
                     </div>
                 </div>
 
                 <div class="bg-image">
-                    <img loading="lazy" src="assets/images/section/bg-service-2.jpg" alt="AI Creative Studio">
+                    <img loading="lazy" src="assets/images/section/Services_bg_002.jpg" alt="AI Creative Studio">
                     <div class="img-item">
                         <img loading="lazy" src="assets/images/item/overlay.png" alt="">
                     </div>
                 </div>
 
                 <div class="bg-image">
-                    <img loading="lazy" src="assets/images/section/bg-service-3.jpg" alt="DCP and Mastering">
+                    <img loading="lazy" src="assets/images/section/Services_bg_003.jpg" alt="DCP and Mastering">
                     <div class="img-item">
                         <img loading="lazy" src="assets/images/item/overlay.png" alt="">
                     </div>
                 </div>
 
                 <div class="bg-image">
-                    <img loading="lazy" src="assets/images/section/bg-service-1.jpg" alt="Virtual Production">
+                    <img loading="lazy" src="assets/images/section/Services_bg_001.jpg" alt="Virtual Production">
                     <div class="img-item">
                         <img loading="lazy" src="assets/images/item/overlay.png" alt="">
                     </div>
                 </div>
 
                 <div class="bg-image">
-                    <img loading="lazy" src="assets/images/section/bg-service-2.jpg" alt="Design and Branding">
+                    <img loading="lazy" src="assets/images/section/Services_bg_003.jpg" alt="Design and Branding">
                     <div class="img-item">
                         <img loading="lazy" src="assets/images/item/overlay.png" alt="">
                     </div>
@@ -716,7 +757,7 @@
                         </div>
                     </div>
 
-                    <!-- Service 06 (Formerly Service 07) -->
+                    <!-- Service 06 -->
                     <div class="wg-service-2">
                         <div class="main-image">
                             <div class="image">
@@ -775,7 +816,7 @@
                         </div>
                     </div>
 
-                    <!-- Service 07 (Formerly Service 08) -->
+                    <!-- Service 07 -->
                     <div class="wg-service-2">
                         <div class="main-image">
                             <div class="image">
@@ -831,7 +872,7 @@
                         </div>
                     </div>
 
-                    <!-- Service 08 (Formerly Service 06 - Design & Branding) -->
+                    <!-- Service 08 -->
                     <div class="wg-service-2">
                         <div class="main-image">
                             <div class="image">
@@ -1047,10 +1088,13 @@
                                 ABOUT US
                             </h6>
                             <div class="text-color-change mb-5">
-                                <h5 class="desc letter-space--2 fw-normal ">
+                                <h5 class="desc letter-space--2 fw-normal" style="font-size: 20px;">
                                     With over 10 years of experience in filmmaking and VFX, my journey has been one of
                                     constant learning, creative exploration, and growth from building things from the
-                                    ground up to contributing to Bollywood films. <br><br>
+                                    ground up to contributing to Bollywood and Hollywood films.
+
+                                    <br><br>
+
                                     To me, filmmaking and VFX are more than just creative disciplines; they are
                                     ever-evolving worlds of possibilities, where technology blends in with imagination
                                     and every idea has the potential to become something extraordinary.

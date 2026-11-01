@@ -4423,7 +4423,7 @@ button.animate-btn::after,
   align-items: end;
 }
 .section-hero-v1 .davies-large {
-  font-size: clamp(80px, 16vw, 200px);
+  font-size: clamp(70px, 14vw, 140px);
   line-height: clamp(96px, 14vw, 176px);
   font-weight: 550;
   letter-spacing: -0.06em;
@@ -5688,7 +5688,7 @@ button.animate-btn::after,
   inset: 0;
   z-index: 0;
   background: rgba(0, 0, 0, 0.5607843137);
-  backdrop-filter: blur(24px);
+  backdrop-filter: blur(3.5px);
 }
 @media (min-width: 1200px) {
   .section-service-2 .wg-service-2:not(:first-child) {
