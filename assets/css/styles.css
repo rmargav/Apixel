@@ -4428,6 +4428,27 @@ button.animate-btn::after,
   font-weight: 550;
   letter-spacing: -0.06em;
 }
+/* Mobile devices */
+@media (max-width: 767px) {
+  .section-hero-v1 .davies-large {
+    font-size: clamp(45px, 11vw, 75px);
+    line-height: 1.1;
+  }
+}
+/* Desktop */
+.section-hero-v1 .hero-description {
+  font-size: 20px !important;
+  line-height: 1.6;
+}
+
+/* Mobile devices */
+@media screen and (max-width: 767px) {
+  .section-hero-v1 .text-color-change h5.hero-description {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    letter-spacing: normal;
+  }
+}
 .section-hero-v1 .overlay {
   position: absolute;
   bottom: -1px;
