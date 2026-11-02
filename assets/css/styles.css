@@ -4451,14 +4451,16 @@ button.animate-btn::after,
 }
 .hero-title-image {
   width: 100%;
-  max-width: 350px;
+  max-width: 550px;
   height: auto;
   display: block;
   object-fit: contain;
+  margin-bottom: -180px;
 }
 @media (max-width: 768px) {
   .hero-title-image {
     max-width: 200px;
+    margin-bottom: -80px;
   }
 }
 .logo-custom {
@@ -4532,7 +4534,7 @@ button.animate-btn::after,
   }
 
   .logo-custom .logo-img {
-    width: 180px;
+    width: 100px !important;
     height: auto;
   }
 }
