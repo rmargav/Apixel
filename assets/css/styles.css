@@ -4538,6 +4538,24 @@ button.animate-btn::after,
     height: auto;
   }
 }
+.infiniteSlide_tech_main {
+  width: 100%;
+  overflow: hidden;
+}
+
+.infiniteSlide .app_icon {
+  flex-shrink: 0 !important;
+  display: inline-block !important;
+}
+
+.infiniteSlide .app_icon img {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-height: 70px;
+  width: auto;
+  object-fit: contain;
+}
 .section-hero-v1 .overlay {
   position: absolute;
   bottom: -1px;
