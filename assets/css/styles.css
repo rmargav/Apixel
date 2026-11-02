@@ -4449,6 +4449,93 @@ button.animate-btn::after,
     letter-spacing: normal;
   }
 }
+.hero-title-image {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+@media (max-width: 768px) {
+  .hero-title-image {
+    max-width: 200px;
+  }
+}
+.logo-custom {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 35px;
+  box-sizing: content-box;
+}
+
+.logo-site-sv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-img {
+  display: block;
+  object-fit: contain;
+}
+
+/* Vertical lines */
+.logo-custom .line-vertical {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: #fff;
+}
+
+.logo-custom .line-vertical.left {
+  left: 0;
+}
+
+.logo-custom .line-vertical.right {
+  right: 0;
+}
+
+/* Horizontal lines */
+.logo-custom .line-horizontal {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #fff;
+}
+
+.logo-custom .line-horizontal.top {
+  top: 0;
+}
+
+.logo-custom .line-horizontal.bottom {
+  bottom: 0;
+}
+/* Desktop */
+.logo-custom {
+  padding: 35px;
+}
+
+.logo-img {
+  width: 150px !important;
+  height: 170px !important;
+  object-fit: contain;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .logo-custom {
+    padding: 20px;
+  }
+
+  .logo-img {
+    width: 100px !important;
+    height: 120px !important;
+  }
+}
 .section-hero-v1 .overlay {
   position: absolute;
   bottom: -1px;
