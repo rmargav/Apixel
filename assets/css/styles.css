@@ -4519,9 +4519,9 @@ button.animate-btn::after,
   padding: 35px;
 }
 
-.logo-img {
-  width: 150px !important;
-  height: 170px !important;
+.logo-custom .logo-img {
+  width: 350px;
+  height: auto;
   object-fit: contain;
 }
 
@@ -4531,9 +4531,9 @@ button.animate-btn::after,
     padding: 20px;
   }
 
-  .logo-img {
-    width: 100px !important;
-    height: 120px !important;
+  .logo-custom .logo-img {
+    width: 180px;
+    height: auto;
   }
 }
 .section-hero-v1 .overlay {
