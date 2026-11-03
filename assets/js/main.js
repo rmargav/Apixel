@@ -455,6 +455,26 @@
     });
   };
 
+  /* Deferred Video Loading (Fixes Long Initial Load Time)
+    -------------------------------------------------------------------------*/
+  var initLazyVideos = function () {
+    // 1. Load Hero Video
+    var heroVid = document.getElementById("hero-video");
+    if (heroVid) {
+      heroVid.innerHTML =
+        '<source src="assets/images/video/corridor.webm" type="video/webm">';
+      heroVid.load();
+    }
+
+    // 2. Load About Us Video
+    var aboutVid = document.getElementById("about-video");
+    if (aboutVid) {
+      aboutVid.innerHTML =
+        '<source src="assets/images/video/Video.mp4" type="video/mp4">';
+      aboutVid.load();
+    }
+  };
+
   /* Dom Ready
     -------------------------------------------------------------------------*/
   $(function () {
@@ -467,5 +487,8 @@
     clickActive();
     selectedWorkSlider();
     showTeamSection();
+
+    // Call the video loader!
+    initLazyVideos();
   });
 })(jQuery);

@@ -159,9 +159,19 @@
         <div class="section-hero-v1">
             <div class="overlay"></div>
 
-            <div class="bg-video">
+            <!-- <div class="bg-video">
                 <video class="" muted autoplay loop playsinline>
                     <source src="assets/images/video/corridor.webm" type="video/webm" />
+                </video>
+                <div class="video-overlay"></div>
+                <div class="video-overlay-2"></div>
+                <div class="video-overlay-2"></div>
+            </div> -->
+            <div class="bg-video">
+                <!-- Added ID, GPU Acceleration inline style, and removed <source> -->
+                <video id="hero-video" style="will-change: transform; transform: translateZ(0);" muted autoplay loop
+                    playsinline>
+                    <!-- Source injected via JS so it doesn't block the loading screen -->
                 </video>
                 <div class="video-overlay"></div>
                 <div class="video-overlay-2"></div>
@@ -1130,8 +1140,11 @@
                     <div class="col-lg-5">
                         <div class="col-left mb-lg-0">
                             <div class="davies-video">
-                                <video class="video" muted="" autoplay="" loop="" playsinline="">
-                                    <source src="assets/images/video/Video.mp4" type="video/mp4" />
+                                <!-- Added ID, GPU Acceleration inline style, and removed <source> -->
+                                <video id="about-video" class="video"
+                                    style="will-change: transform; transform: translateZ(0);" muted autoplay loop
+                                    playsinline>
+                                    <!-- Source injected via JS so it doesn't block the loading screen -->
                                 </video>
                                 <div class="overlay v1"></div>
                                 <div class="overlay mark-1"></div>
@@ -2285,71 +2298,58 @@
                             <div class="form-content">
                                 <div class="tf-grid-layout sm-col-2">
                                     <fieldset class="tf-field">
-                                        <!-- Added name="name" -->
-                                        <input class="tf-input" type="text" name="name" placeholder required />
+                                        <input class="tf-input" type="text" name="name" placeholder=" " required />
                                         <label class="tf-lable">Name <span class="text-primary">*</span></label>
                                     </fieldset>
                                     <fieldset class="tf-field">
-                                        <!-- Added name="email" -->
-                                        <input class="tf-input" type="email" name="email" placeholder required />
+                                        <input class="tf-input" type="email" name="email" placeholder=" " required />
                                         <label class="tf-lable">Email <span class="text-primary">*</span></label>
                                     </fieldset>
                                 </div>
+
                                 <div class="tf-grid-layout sm-col-2">
+
+                                    <!-- FIXED: Interest Dropdown using a real <select> tag for PHP -->
                                     <div class="nc-wrap">
                                         <p class="select-label fs-14 text-white-64 d-sm-none">
                                             Select an option <span class="text-primary">*</span>
                                         </p>
-
-                                        <div class="nice-select">
-                                            <span class="current letter-space--1">You are interested in</span>
-
-                                            <ul class="list">
-                                                <li class="option disabled">
-                                                    -- Select an option --
-                                                </li>
-                                                <li class="option">VFX & CGI</li>
-                                                <li class="option">Animation & Motion Design</li>
-                                                <li class="option">Film & Video Production</li>
-                                                <li class="option">Post-Production</li>
-                                                <li class="option">AI Creative Studio</li>
-                                                <li class="option">Design & Branding</li>
-                                                <li class="option">DCP & Mastering</li>
-                                                <li class="option">Virtual Production</li>
-                                            </ul>
-                                        </div>
-
-                                        <input type="hidden" name="interest" id="interest" />
+                                        <select name="interest" class="nice-select w-100" required>
+                                            <option value="" disabled selected>You are interested in</option>
+                                            <option value="VFX & CGI">VFX & CGI</option>
+                                            <option value="Animation & Motion Design">Animation & Motion Design</option>
+                                            <option value="Film & Video Production">Film & Video Production</option>
+                                            <option value="Post-Production">Post-Production</option>
+                                            <option value="AI Creative Studio">AI Creative Studio</option>
+                                            <option value="Design & Branding">Design & Branding</option>
+                                            <option value="DCP & Mastering">DCP & Mastering</option>
+                                            <option value="Virtual Production">Virtual Production</option>
+                                        </select>
                                     </div>
+
+                                    <!-- FIXED: Budget Dropdown using a real <select> tag for PHP -->
                                     <div class="nc-wrap">
                                         <p class="select-label fs-14 text-white-64 d-sm-none">
                                             Select your budget <span class="text-primary">*</span>
                                         </p>
-
-                                        <div class="nice-select">
-                                            <span class="current letter-space--1">Budget in INR</span>
-
-                                            <ul class="list">
-                                                <li class="option disabled">
-                                                    -- Select your budget --
-                                                </li>
-                                                <li class="option">₹10,000 – ₹50,000</li>
-                                                <li class="option">₹50,000 – ₹1,00,000</li>
-                                                <li class="option">₹1,00,000 – ₹5,00,000</li>
-                                                <li class="option">₹5,00,000 – ₹10,00,000</li>
-                                                <li class="option">₹10,00,000+</li>
-                                            </ul>
-                                        </div>
-
-                                        <input type="hidden" name="budget" id="budget" />
+                                        <select name="budget" class="nice-select w-100" required>
+                                            <option value="" disabled selected>Budget in INR</option>
+                                            <option value="₹10,000 – ₹50,000">₹10,000 – ₹50,000</option>
+                                            <option value="₹50,000 – ₹1,00,000">₹50,000 – ₹1,00,000</option>
+                                            <option value="₹1,00,000 – ₹5,00,000">₹1,00,000 – ₹5,00,000</option>
+                                            <option value="₹5,00,000 – ₹10,00,000">₹5,00,000 – ₹10,00,000</option>
+                                            <option value="₹10,00,000+">₹10,00,000+</option>
+                                        </select>
                                     </div>
+
                                 </div>
+
                                 <fieldset class="tf-field">
-                                    <!-- Added name="details" -->
-                                    <input class="tf-input" type="text" name="details" placeholder required />
-                                    <label class="tf-lable">Project details</label>
+                                    <input class="tf-input" type="text" name="details" placeholder=" " required />
+                                    <label class="tf-lable">Project details <span class="text-primary">*</span></label>
                                 </fieldset>
                             </div>
+
                             <div class="form-action">
                                 <button type="submit" class="tf-btn">
                                     <span class="text-caption">SUBMIT MESSAGE</span>
