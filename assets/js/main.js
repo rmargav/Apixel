@@ -655,7 +655,6 @@
 
   /* Deferred Video Loading (Fixes Long Initial Load Time)
     -------------------------------------------------------------------------*/
-  /* Deferred Video Loading */
   var initLazyVideos = function () {
     // 1. Load Hero Video
     var heroVid = document.getElementById("hero-video");
@@ -663,9 +662,6 @@
       heroVid.innerHTML =
         '<source src="assets/images/video/corridor.webm" type="video/webm">';
       heroVid.load();
-      heroVid.play().catch(function (e) {
-        console.log("Autoplay prevented:", e);
-      }); // Forces autoplay
     }
 
     // 2. Load About Us Video
@@ -674,9 +670,6 @@
       aboutVid.innerHTML =
         '<source src="assets/images/video/Video.mp4" type="video/mp4">';
       aboutVid.load();
-      aboutVid.play().catch(function (e) {
-        console.log("Autoplay prevented:", e);
-      }); // Forces autoplay
     }
   };
 
