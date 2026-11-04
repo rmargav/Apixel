@@ -430,6 +430,204 @@
     }
   };
 
+  /* Lightweight Services Slider (High Performance)
+    -------------------------------------------------------------------------*/
+  var lightweightServicesSlider = function () {
+    if ($("#serviceScroll").length === 0) return;
+
+    var servicesData = [
+      {
+        // 01
+        title: "VFX & CGI",
+        desc: "Seamless compositing, green screen removal, and clean-ups to 3D modelling, animation, CGI evironments, and realistic product visuals.",
+        bg: "assets/images/section/Services_bg_001.jpg",
+        main: "assets/images/section/VFX  CGI.jpeg",
+        next: "assets/images/section/Animation  Motion Design.jpeg",
+        features: [
+          "VFX",
+          "Compositing",
+          "Roto & Paint",
+          "3D & CGI",
+          "Matte Painting & FX",
+        ],
+      },
+      {
+        // 02
+        title: "Animation & Motion Design",
+        desc: "Turning ideas, messages, and visuals into movement that holds attention. From 2D and 3D animation to motion graphics, title sequences, and animated explainers.",
+        bg: "assets/images/section/Services_bg_002.jpg",
+        main: "assets/images/section/Animation  Motion Design.jpeg",
+        next: "assets/images/section/Film  Video Production.jpeg",
+        features: [
+          "2D / 3D Animation",
+          "Motion Graphics",
+          "Titles",
+          "Explainers",
+          "Brand Animation",
+        ],
+      },
+      {
+        // 03
+        title: "Film & Video Production",
+        desc: "From the first idea to the final shot, we help bring your vision to life on screen.",
+        bg: "assets/images/section/Services_bg_003.jpg",
+        main: "assets/images/section/Film  Video Production.jpeg",
+        next: "assets/images/section/Post-Production.jpeg",
+        features: [
+          "Film Production",
+          "Ad Films",
+          "Brand Films",
+          "Music Videos",
+          "AI Films",
+        ],
+      },
+      {
+        // 04
+        title: "Post-Production",
+        desc: "We bring footage together through editing, colour grading, sound design, visual effects, and finishing to create a seamless final film.",
+        bg: "assets/images/section/Services_bg_001.jpg",
+        main: "assets/images/section/Post-Production.jpeg",
+        next: "assets/images/section/AI Creative Studio.jpeg",
+        features: ["Editing", "Colour", "VFX", "Finishing", "Mastering & QC"],
+      },
+      {
+        // 05
+        title: "AI Creative Studio",
+        desc: "With the use of AI as a creative tool, we help brands and filmmakers explore new possibilities, speed up ideation, and create distinctive content while keeping the original vision at the centre.",
+        bg: "assets/images/section/Services_bg_002.jpg",
+        main: "assets/images/section/AI Creative Studio.jpeg",
+        next: "assets/images/section/DCP  Mastering.jpeg",
+        features: [
+          "AI Filmmaking",
+          "AI Animation",
+          "AI VFX",
+          "Generative Content",
+          "AI Commercials",
+        ],
+      },
+      {
+        // 06
+        title: "DCP & Mastering",
+        desc: "We provide Digital Cinema Package (DCP) creation, mastering, format conversion, and delivery preparation to help ensure your content meets the technical requirements of its intended platform.",
+        bg: "assets/images/section/Services_bg_003.jpg",
+        main: "assets/images/section/DCP  Mastering.jpeg",
+        next: "assets/images/section/Virtual Production.jpeg",
+        features: ["DCP", "2K / 4K Masters", "OTT Delivery", "Broadcast", "QC"],
+      },
+      {
+        // 07
+        title: "Virtual Production",
+        desc: "Whether you need a location that doesn’t exist or greater creative control over a shoot, we help bring the environment to you while making the most of your production time and resources.",
+        bg: "assets/images/section/Services_bg_001.jpg",
+        main: "assets/images/section/Virtual Production.jpeg",
+        next: "assets/images/section/Design  Branding.jpeg",
+        features: ["Virtual Sets", "Green Screen", "XR", "Real-Time CGI"],
+      },
+      {
+        // 08
+        title: "Design & Branding",
+        desc: "We create brand identities, logos, campaign visuals, key art, and digital designs that reflect your personality and communicate what sets you apart.",
+        bg: "assets/images/section/Services_bg_003.jpg",
+        main: "assets/images/section/Design  Branding.jpeg",
+        next: "assets/images/section/VFX  CGI.jpeg", // Loops back to the first one
+        features: [
+          "Graphic Design",
+          "Posters",
+          "Key Visuals",
+          "Branding",
+          "Digital Campaigns",
+        ],
+      },
+    ];
+
+    var currentIndex = 0;
+    var timer;
+    var $bgContainer = $("#dyn-srv-bg-container");
+    var $bgImg = $("#dyn-srv-bg");
+    var $mainContainer = $("#dyn-srv-main-container");
+    var $mainImg = $("#dyn-srv-main-img");
+    var $thumbContainer = $("#dyn-srv-thumb-container");
+    var $thumbImg = $("#dyn-srv-thumb");
+    var $textContainer = $("#dyn-srv-text-container");
+    var $title = $("#dyn-srv-title");
+    var $desc = $("#dyn-srv-desc");
+    var $features = $("#dyn-srv-features");
+
+    function preload(index) {
+      var nextImg = new Image();
+      nextImg.src = servicesData[index].main;
+    }
+
+    function updateServiceDOM(index) {
+      var data = servicesData[index];
+
+      // Fade out
+      $bgContainer.css("opacity", 0);
+      $mainContainer.css("opacity", 0);
+      $thumbContainer.css("opacity", 0);
+      $textContainer.css("opacity", 0);
+
+      setTimeout(function () {
+        // Update values
+        $bgImg.attr("src", data.bg);
+        $mainImg.attr("src", data.main);
+        $thumbImg.attr("src", data.next);
+        $title.text(data.title);
+        $desc.text(data.desc);
+
+        var featuresHtml = "";
+        for (var i = 0; i < data.features.length; i++) {
+          featuresHtml +=
+            '<li class="letter-space--1"><span class="text-primary">//</span> ' +
+            data.features[i] +
+            "</li>";
+        }
+        $features.html(featuresHtml);
+
+        // Fade back in
+        $bgContainer.css("opacity", 1);
+        $mainContainer.css("opacity", 1);
+        $thumbContainer.css("opacity", 1);
+        $textContainer.css("opacity", 1);
+      }, 300);
+
+      preload((index + 1) % servicesData.length);
+    }
+
+    function autoSlide() {
+      currentIndex = (currentIndex + 1) % servicesData.length;
+      updateServiceDOM(currentIndex);
+    }
+
+    function resetTimer() {
+      clearInterval(timer);
+      timer = setInterval(autoSlide, 5000); // 5 seconds
+    }
+
+    // Button Clicks
+    $("#btn-srv-next")
+      .off("click")
+      .on("click", function (e) {
+        e.preventDefault();
+        currentIndex = (currentIndex + 1) % servicesData.length;
+        updateServiceDOM(currentIndex);
+        resetTimer();
+      });
+
+    $("#btn-srv-prev")
+      .off("click")
+      .on("click", function (e) {
+        e.preventDefault();
+        currentIndex =
+          (currentIndex - 1 + servicesData.length) % servicesData.length;
+        updateServiceDOM(currentIndex);
+        resetTimer();
+      });
+
+    preload(1);
+    resetTimer();
+  };
+
   /* Show Team Section
     -------------------------------------------------------------------------*/
   var showTeamSection = function () {
@@ -486,9 +684,8 @@
     openMbMenu();
     clickActive();
     selectedWorkSlider();
+    lightweightServicesSlider();
     showTeamSection();
-
-    // Call the video loader!
     initLazyVideos();
   });
 })(jQuery);

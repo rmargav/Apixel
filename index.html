@@ -414,18 +414,21 @@
         <section class="section-service-2 overflow-hidden flat-spacing" id="serviceScroll">
             <!-- GPU Acceleration & Professional Styling Fixes -->
             <style>
-                /* 1. Performance: Force Hardware Acceleration on Animating Elements to stop mobile lag */
+                .section-service-2 {
+                    content-visibility: auto;
+                    contain-intrinsic-size: 1000px;
+                }
+
                 .section-service-2 .wg-service-2,
                 .section-service-2 .bg-image,
                 .section-service-2 .image-2,
                 .section-service-2 .main-image {
-                    will-change: transform, opacity, width, height, left;
+                    will-change: transform, opacity;
                     transform: translateZ(0);
                     backface-visibility: hidden;
                     -webkit-font-smoothing: subpixel-antialiased;
                 }
 
-                /* 2. Aesthetics: Premium Picture-Frame Styling for Service Images */
                 .section-service-2 .main-image .image,
                 .section-service-2 .image-2 {
                     border-radius: 16px;
@@ -433,11 +436,8 @@
                     background: rgba(255, 255, 255, 0.03);
                     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
                     padding: 6px;
-                    /* Inner frame gap */
                     overflow: hidden;
-                    transition:
-                        border-color 0.3s ease,
-                        box-shadow 0.3s ease;
+                    transition: opacity 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
                 }
 
                 .section-service-2 .wg-service-2:hover .main-image .image {
@@ -452,63 +452,17 @@
                     height: 100%;
                     object-fit: cover;
                 }
+
+                .dynamic-fade {
+                    transition: opacity 0.3s ease;
+                }
             </style>
 
-            <!-- Services Bg image -->
+            <!-- Single Dynamic Background Image -->
             <div class="bg-image-list">
-                <div class="bg-image">
-                    <img loading="lazy" src="assets/images/section/Services_bg_001.jpg" alt="VFX and CGI" />
-                    <div class="img-item">
-                        <img loading="lazy" src="assets/images/item/overlay.png" alt="" />
-                    </div>
-                </div>
-
-                <div class="bg-image">
-                    <img loading="lazy" src="assets/images/section/Services_bg_002.jpg"
-                        alt="Animation and Motion Design" />
-                    <div class="img-item">
-                        <img loading="lazy" src="assets/images/item/overlay.png" alt="" />
-                    </div>
-                </div>
-
-                <div class="bg-image">
-                    <img loading="lazy" src="assets/images/section/Services_bg_003.jpg"
-                        alt="Film and Video Production" />
-                    <div class="img-item">
-                        <img loading="lazy" src="assets/images/item/overlay.png" alt="" />
-                    </div>
-                </div>
-
-                <div class="bg-image">
-                    <img loading="lazy" src="assets/images/section/Services_bg_001.jpg" alt="Post Production" />
-                    <div class="img-item">
-                        <img loading="lazy" src="assets/images/item/overlay.png" alt="" />
-                    </div>
-                </div>
-
-                <div class="bg-image">
-                    <img loading="lazy" src="assets/images/section/Services_bg_002.jpg" alt="AI Creative Studio" />
-                    <div class="img-item">
-                        <img loading="lazy" src="assets/images/item/overlay.png" alt="" />
-                    </div>
-                </div>
-
-                <div class="bg-image">
-                    <img loading="lazy" src="assets/images/section/Services_bg_003.jpg" alt="DCP and Mastering" />
-                    <div class="img-item">
-                        <img loading="lazy" src="assets/images/item/overlay.png" alt="" />
-                    </div>
-                </div>
-
-                <div class="bg-image">
-                    <img loading="lazy" src="assets/images/section/Services_bg_001.jpg" alt="Virtual Production" />
-                    <div class="img-item">
-                        <img loading="lazy" src="assets/images/item/overlay.png" alt="" />
-                    </div>
-                </div>
-
-                <div class="bg-image">
-                    <img loading="lazy" src="assets/images/section/Services_bg_003.jpg" alt="Design and Branding" />
+                <div class="bg-image dynamic-fade" id="dyn-srv-bg-container" style="opacity: 1; z-index: 1;">
+                    <img id="dyn-srv-bg" loading="lazy" src="assets/images/section/Services_bg_001.jpg"
+                        alt="Background" />
                     <div class="img-item">
                         <img loading="lazy" src="assets/images/item/overlay.png" alt="" />
                     </div>
@@ -522,472 +476,54 @@
                     </h2>
                 </div>
             </div>
+
             <div class="container">
-                <div class="wrap-control position-relative">
-                    <!-- Service 01 -->
+                <div class="wrap-control position-relative" style="min-height: 600px;">
+                    <!-- Single Dynamic Service Block -->
                     <div class="wg-service-2">
-                        <div class="main-image">
+                        <div class="main-image dynamic-fade" id="dyn-srv-main-container">
                             <div class="image">
-                                <img loading="lazy" width="424" height="530" src="assets/images/section/VFX  CGI.jpeg"
-                                    alt="Image" />
-                            </div>
-                            <!-- REPLACED BUTTON WRAPPER -->
-                            <div class="action-group" style="
-                    position: absolute;
-                    z-index: 10;
-                    right: 20px;
-                    bottom: 20px;
-                    display: flex;
-                    gap: 10px;
-                  ">
-                                <div class="action action-next tf-btn-2 cs-pointer" style="margin: 0">
-                                    <i class="icon icon-arrow-long-right"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="center">
-                            <h5 class="title">VFX & CGI</h5>
-                            <p class="desc">
-                                Seamless compositing, green screen removal, and clean-ups to
-                                3D modelling, animation, CGI evironments, and realistic
-                                product visuals.
-                            </p>
-                            <div class="br-line d-flex"></div>
-                            <ul class="tf-list vertical">
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> VFX
-                                </li>
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> Compositing
-                                </li>
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> Roto & Paint
-                                </li>
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> 3D & CGI
-                                </li>
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> Matte Painting & FX
-                                </li>
-                            </ul>
-                            <a href="#contactScroll" class="tf-btn"> START A PROJECT </a>
-                        </div>
-                        <div class="image-simu"></div>
-                        <div class="image-2">
-                            <img loading="lazy" width="212" height="265"
-                                src="assets/images/section/Animation  Motion Design.jpeg" alt="Image" />
-                        </div>
-                    </div>
+                                <img id="dyn-srv-main-img" loading="lazy" width="424" height="530"
+                                    src="assets/images/section/VFX  CGI.jpeg" alt="Service Image" />
 
-                    <!-- Service 02 -->
-                    <div class="wg-service-2">
-                        <div class="main-image">
-                            <div class="image">
-                                <img loading="lazy" width="424" height="530"
-                                    src="assets/images/section/Animation  Motion Design.jpeg" alt="Image" />
                             </div>
-                            <!-- REPLACED BUTTON WRAPPER -->
-                            <div class="action-group" style="
-                    position: absolute;
-                    z-index: 10;
-                    right: 20px;
-                    bottom: 20px;
-                    display: flex;
-                    gap: 10px;
-                  ">
-                                <div class="action action-prev tf-btn-2 cs-pointer"
+                            <!-- Navigation Buttons -->
+                            <div class="action-group"
+                                style="position: absolute; z-index: 10; right: 20px; bottom: 20px; display: flex; gap: 10px;">
+                                <div class="action action-prev tf-btn-2 cs-pointer" id="btn-srv-prev"
                                     style="position: static !important; margin: 0">
                                     <i class="icon icon-arrow-long-left"></i>
                                 </div>
-                                <div class="action action-next tf-btn-2 cs-pointer"
+                                <div class="action action-next tf-btn-2 cs-pointer" id="btn-srv-next"
                                     style="position: static !important; margin: 0">
                                     <i class="icon icon-arrow-long-right"></i>
                                 </div>
                             </div>
                         </div>
-                        <div class="center">
-                            <h5 class="title">Animation & Motion Design</h5>
-                            <p class="desc">
-                                Turning ideas, messages, and visuals into movement that holds
-                                attention. From 2D and 3D animation to motion graphics, title
-                                sequences, and animated explainers.
-                            </p>
-                            <div class="br-line d-flex"></div>
-                            <ul class="tf-list vertical">
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> 2D / 3D Animation
-                                </li>
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> Motion Graphics
-                                </li>
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> Titles
-                                </li>
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> Explainers
-                                </li>
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> Brand Animation
-                                </li>
-                            </ul>
-                            <a href="#contactScroll" class="tf-btn"> START A PROJECT </a>
-                        </div>
-                        <div class="image-simu"></div>
-                        <div class="image-2">
-                            <img loading="lazy" width="212" height="265"
-                                src="assets/images/section/Film  Video Production.jpeg" alt="Image" />
-                        </div>
-                    </div>
 
-                    <!-- Service 03 -->
-                    <div class="wg-service-2">
-                        <div class="main-image">
-                            <div class="image">
-                                <img loading="lazy" width="424" height="530"
-                                    src="assets/images/section/Film  Video Production.jpeg" alt="Image" />
-                            </div>
-                            <!-- REPLACED BUTTON WRAPPER -->
-                            <div class="action-group" style="
-                    position: absolute;
-                    z-index: 10;
-                    right: 20px;
-                    bottom: 20px;
-                    display: flex;
-                    gap: 10px;
-                  ">
-                                <div class="action action-prev tf-btn-2 cs-pointer"
-                                    style="position: static !important; margin: 0">
-                                    <i class="icon icon-arrow-long-left"></i>
-                                </div>
-                                <div class="action action-next tf-btn-2 cs-pointer"
-                                    style="position: static !important; margin: 0">
-                                    <i class="icon icon-arrow-long-right"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="center">
-                            <h5 class="title">Film & Video Production</h5>
-                            <p class="desc">
-                                From the first idea to the final shot, we help bring your
-                                vision to life on screen.
+                        <div class="center dynamic-fade" id="dyn-srv-text-container">
+                            <h5 class="title" id="dyn-srv-title">VFX & CGI</h5>
+                            <p class="desc" id="dyn-srv-desc">
+                                Seamless compositing, green screen removal, and clean-ups to 3D modelling, animation,
+                                CGI evironments, and realistic product visuals.
                             </p>
                             <div class="br-line d-flex"></div>
-                            <ul class="tf-list vertical">
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> Film Production
-                                </li>
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> Ad Films
-                                </li>
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> Brand Films
-                                </li>
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> Music Videos
-                                </li>
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> AI Films
+                            <ul class="tf-list vertical" id="dyn-srv-features">
+                                <li class="letter-space--1"><span class="text-primary">//</span> VFX</li>
+                                <li class="letter-space--1"><span class="text-primary">//</span> Compositing</li>
+                                <li class="letter-space--1"><span class="text-primary">//</span> Roto & Paint</li>
+                                <li class="letter-space--1"><span class="text-primary">//</span> 3D & CGI</li>
+                                <li class="letter-space--1"><span class="text-primary">//</span> Matte Painting & FX
                                 </li>
                             </ul>
                             <a href="#contactScroll" class="tf-btn"> START A PROJECT </a>
                         </div>
-                        <div class="image-simu"></div>
-                        <div class="image-2">
-                            <img loading="lazy" width="212" height="265"
-                                src="assets/images/section/Post-Production.jpeg" alt="Image" />
-                        </div>
-                    </div>
 
-                    <!-- Service 04 -->
-                    <div class="wg-service-2">
-                        <div class="main-image">
-                            <div class="image">
-                                <img loading="lazy" width="424" height="530"
-                                    src="assets/images/section/Post-Production.jpeg" alt="Image" />
-                            </div>
-                            <!-- REPLACED BUTTON WRAPPER -->
-                            <div class="action-group" style="
-                    position: absolute;
-                    z-index: 10;
-                    right: 20px;
-                    bottom: 20px;
-                    display: flex;
-                    gap: 10px;
-                  ">
-                                <div class="action action-prev tf-btn-2 cs-pointer"
-                                    style="position: static !important; margin: 0">
-                                    <i class="icon icon-arrow-long-left"></i>
-                                </div>
-                                <div class="action action-next tf-btn-2 cs-pointer"
-                                    style="position: static !important; margin: 0">
-                                    <i class="icon icon-arrow-long-right"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="center">
-                            <h5 class="title">Post-Production</h5>
-                            <p class="desc">
-                                We bring footage together through editing, colour grading,
-                                sound design, visual effects, and finishing to create a
-                                seamless final film.
-                            </p>
-                            <div class="br-line d-flex"></div>
-                            <ul class="tf-list vertical">
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> Editing
-                                </li>
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> Colour
-                                </li>
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> VFX
-                                </li>
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> Finishing
-                                </li>
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> Mastering & QC
-                                </li>
-                            </ul>
-                            <a href="#contactScroll" class="tf-btn"> START A PROJECT </a>
-                        </div>
                         <div class="image-simu"></div>
-                        <div class="image-2">
-                            <img loading="lazy" width="212" height="265"
-                                src="assets/images/section/AI Creative Studio.jpeg" alt="Image" />
+                        <div class="image-2 dynamic-fade" id="dyn-srv-thumb-container">
+                            <img id="dyn-srv-thumb" loading="lazy" width="212" height="265"
+                                src="assets/images/section/Animation  Motion Design.jpeg" alt="Next Service" />
                         </div>
-                    </div>
-
-                    <!-- Service 05 -->
-                    <div class="wg-service-2">
-                        <div class="main-image">
-                            <div class="image">
-                                <img loading="lazy" width="424" height="530"
-                                    src="assets/images/section/AI Creative Studio.jpeg" alt="Image" />
-                            </div>
-                            <!-- REPLACED BUTTON WRAPPER -->
-                            <div class="action-group" style="
-                    position: absolute;
-                    z-index: 10;
-                    right: 20px;
-                    bottom: 20px;
-                    display: flex;
-                    gap: 10px;
-                  ">
-                                <div class="action action-prev tf-btn-2 cs-pointer"
-                                    style="position: static !important; margin: 0">
-                                    <i class="icon icon-arrow-long-left"></i>
-                                </div>
-                                <div class="action action-next tf-btn-2 cs-pointer"
-                                    style="position: static !important; margin: 0">
-                                    <i class="icon icon-arrow-long-right"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="center">
-                            <h5 class="title">AI Creative Studio</h5>
-                            <p class="desc">
-                                With the use of AI as a creative tool, we help brands and
-                                filmmakers explore new possibilities, speed up ideation, and
-                                create distinctive content while keeping the original vision
-                                at the centre.
-                            </p>
-                            <div class="br-line d-flex"></div>
-                            <ul class="tf-list vertical">
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> AI Filmmaking
-                                </li>
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> AI Animation
-                                </li>
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> AI VFX
-                                </li>
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> Generative Content
-                                </li>
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> AI Commercials
-                                </li>
-                            </ul>
-                            <a href="#contactScroll" class="tf-btn"> START A PROJECT </a>
-                        </div>
-                        <div class="image-simu"></div>
-                        <div class="image-2">
-                            <img loading="lazy" width="212" height="265" src="assets/images/section/DCP  Mastering.jpeg"
-                                alt="Image" />
-                        </div>
-                    </div>
-
-                    <!-- Service 06 -->
-                    <div class="wg-service-2">
-                        <div class="main-image">
-                            <div class="image">
-                                <img loading="lazy" width="424" height="530"
-                                    src="assets/images/section/DCP  Mastering.jpeg" alt="Image" />
-                            </div>
-                            <!-- REPLACED BUTTON WRAPPER -->
-                            <div class="action-group" style="
-                    position: absolute;
-                    z-index: 10;
-                    right: 20px;
-                    bottom: 20px;
-                    display: flex;
-                    gap: 10px;
-                  ">
-                                <div class="action action-prev tf-btn-2 cs-pointer"
-                                    style="position: static !important; margin: 0">
-                                    <i class="icon icon-arrow-long-left"></i>
-                                </div>
-                                <div class="action action-next tf-btn-2 cs-pointer"
-                                    style="position: static !important; margin: 0">
-                                    <i class="icon icon-arrow-long-right"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="center">
-                            <h5 class="title">DCP & Mastering</h5>
-                            <p class="desc">
-                                We provide Digital Cinema Package (DCP) creation, mastering,
-                                format conversion, and delivery preparation to help ensure
-                                your content meets the technical requirements of its intended
-                                platform.
-                            </p>
-                            <div class="br-line d-flex"></div>
-                            <ul class="tf-list vertical">
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> DCP
-                                </li>
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> 2K / 4K Masters
-                                </li>
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> OTT Delivery
-                                </li>
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> Broadcast
-                                </li>
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> QC
-                                </li>
-                            </ul>
-                            <a href="#contactScroll" class="tf-btn"> START A PROJECT </a>
-                        </div>
-                        <div class="image-simu"></div>
-                        <div class="image-2">
-                            <img loading="lazy" width="212" height="265"
-                                src="assets/images/section/Virtual Production.jpeg" alt="Image" />
-                        </div>
-                    </div>
-
-                    <!-- Service 07 -->
-                    <div class="wg-service-2">
-                        <div class="main-image">
-                            <div class="image">
-                                <img loading="lazy" width="424" height="530"
-                                    src="assets/images/section/Virtual Production.jpeg" alt="Image" />
-                            </div>
-                            <!-- REPLACED BUTTON WRAPPER -->
-                            <div class="action-group" style="
-                    position: absolute;
-                    z-index: 10;
-                    right: 20px;
-                    bottom: 20px;
-                    display: flex;
-                    gap: 10px;
-                  ">
-                                <div class="action action-prev tf-btn-2 cs-pointer"
-                                    style="position: static !important; margin: 0">
-                                    <i class="icon icon-arrow-long-left"></i>
-                                </div>
-                                <div class="action action-next tf-btn-2 cs-pointer"
-                                    style="position: static !important; margin: 0">
-                                    <i class="icon icon-arrow-long-right"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="center">
-                            <h5 class="title">Virtual Production</h5>
-                            <p class="desc">
-                                Whether you need a location that doesn’t exist or greater
-                                creative control over a shoot, we help bring the environment
-                                to you while making the most of your production time and
-                                resources.
-                            </p>
-                            <div class="br-line d-flex"></div>
-                            <ul class="tf-list vertical">
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> Virtual Sets
-                                </li>
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> Green Screen
-                                </li>
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> XR
-                                </li>
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> Real-Time CGI
-                                </li>
-                            </ul>
-                            <a href="#contactScroll" class="tf-btn"> START A PROJECT </a>
-                        </div>
-                        <div class="image-simu"></div>
-                        <div class="image-2">
-                            <img loading="lazy" width="212" height="265"
-                                src="assets/images/section/Design  Branding.jpeg" alt="Image" />
-                        </div>
-                    </div>
-
-                    <!-- Service 08 -->
-                    <div class="wg-service-2">
-                        <div class="main-image">
-                            <div class="image">
-                                <img loading="lazy" width="424" height="530"
-                                    src="assets/images/section/Design  Branding.jpeg" alt="Image" />
-                            </div>
-                            <!-- REPLACED BUTTON WRAPPER -->
-                            <div class="action-group" style="
-                    position: absolute;
-                    z-index: 10;
-                    right: 20px;
-                    bottom: 20px;
-                    display: flex;
-                    gap: 10px;
-                  ">
-                                <div class="action action-prev tf-btn-2 cs-pointer"
-                                    style="position: static !important; margin: 0">
-                                    <i class="icon icon-arrow-long-left"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="center">
-                            <h5 class="title">Design & Branding</h5>
-                            <p class="desc">
-                                We create brand identities, logos, campaign visuals, key art,
-                                and digital designs that reflect your personality and
-                                communicate what sets you apart.
-                            </p>
-                            <div class="br-line d-flex"></div>
-                            <ul class="tf-list vertical">
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> Graphic Design
-                                </li>
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> Posters
-                                </li>
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> Key Visuals
-                                </li>
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> Branding
-                                </li>
-                                <li class="letter-space--1">
-                                    <span class="text-primary">//</span> Digital Campaigns
-                                </li>
-                            </ul>
-                            <a href="#contactScroll" class="tf-btn"> START A PROJECT </a>
-                        </div>
-                        <div class="image-simu"></div>
                     </div>
                 </div>
             </div>

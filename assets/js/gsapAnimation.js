@@ -229,7 +229,7 @@
     if ($("#smooth-wrapper").length > 0) {
       let smoother = ScrollSmoother.create({
         smooth: 2,
-        smoothTouch: 0.1,
+        smoothTouch: false,
         effects: true,
       });
     }
@@ -677,7 +677,7 @@
   };
 
   var runAnimations = () => {
-    serviceScroll();
+    // serviceScroll();
     stackElement();
     scrollSmooth();
     stackElement2();
