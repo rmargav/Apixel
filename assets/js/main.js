@@ -686,6 +686,11 @@
     selectedWorkSlider();
     lightweightServicesSlider();
     showTeamSection();
-    initLazyVideos();
+    // DELAY VIDEOS: Wait 2.5 seconds for the preloader to finish, THEN load videos
+    setTimeout(function () {
+      if (typeof initLazyVideos === "function") {
+        initLazyVideos();
+      }
+    }, 500);
   });
 })(jQuery);

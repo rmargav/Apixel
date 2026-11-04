@@ -352,9 +352,13 @@
         });
       }
 
-      $(window).on("load", function () {
+      // $(window).on("load", function () {
+      //   animateBars();
+      // });
+      // ADD THIS: Trigger preloader instantly without waiting for network assets
+      setTimeout(function () {
         animateBars();
-      });
+      }, 150);
     } else {
       runAnimations();
     }

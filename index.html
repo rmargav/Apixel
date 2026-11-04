@@ -169,8 +169,8 @@
             </div> -->
             <div class="bg-video">
                 <!-- Added ID, GPU Acceleration inline style, and removed <source> -->
-                <video id="hero-video" style="will-change: transform; transform: translateZ(0);" muted autoplay loop
-                    playsinline>
+                <video id="hero-video" preload="none" style="will-change: transform; transform: translateZ(0);" muted
+                    autoplay loop playsinline>
                     <!-- Source injected via JS so it doesn't block the loading screen -->
                 </video>
                 <div class="video-overlay"></div>
@@ -694,7 +694,7 @@
                         <div class="col-left mb-lg-0">
                             <div class="davies-video">
                                 <!-- Added ID, GPU Acceleration inline style, and removed <source> -->
-                                <video id="about-video" class="video"
+                                <video id="about-video" preload="none" class="video"
                                     style="will-change: transform; transform: translateZ(0);" muted autoplay loop
                                     playsinline>
                                     <!-- Source injected via JS so it doesn't block the loading screen -->
