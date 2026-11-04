@@ -604,8 +604,8 @@
       timer = setInterval(autoSlide, 5000); // 5 seconds
     }
 
-    // Button Clicks
-    $("#btn-srv-next")
+    // Button Clicks (Now targeting both Desktop and Mobile buttons)
+    $("#btn-srv-next, #btn-srv-next-mob")
       .off("click")
       .on("click", function (e) {
         e.preventDefault();
@@ -614,7 +614,7 @@
         resetTimer();
       });
 
-    $("#btn-srv-prev")
+    $("#btn-srv-prev, #btn-srv-prev-mob")
       .off("click")
       .on("click", function (e) {
         e.preventDefault();
